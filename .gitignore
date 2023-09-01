@@ -1,0 +1,14 @@
+/.idea/
+/images/
+/bitrix/
+/upload/
+/.htaccess
+/robots.txt
+/sitemap*.xml
+~*
+*.log
+/*.sql
+Thumbs.db
+.DS_Store
+._.DS_Store
+test*.php
