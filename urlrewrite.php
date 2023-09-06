@@ -1,5 +1,13 @@
 <?php
 $arUrlRewrite=array (
+  6 => 
+  array (
+    'CONDITION' => '#^/lichnyy-kabinet-prodavtsa/moi-obyavleniya/#',
+    'RULE' => '',
+    'ID' => 'bitrix:news',
+    'PATH' => '/lichnyy-kabinet-prodavtsa/moi-obyavleniya/index.php',
+    'SORT' => 100,
+  ),
   5 => 
   array (
     'CONDITION' => '#^/o-servise/vakansii/#',
