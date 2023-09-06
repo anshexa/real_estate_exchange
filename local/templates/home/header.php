@@ -74,18 +74,47 @@ IncludeTemplateLangFile(__FILE__);
                     <p class="mb-0">
                         <a href="#" class="mr-3">
                             <span class="text-black fl-bigmug-line-phone351"></span>
-                            <span class="d-none d-md-inline-block ml-2">+2 102 3923 3922</span>
+                            <span class="d-none d-md-inline-block ml-2">
+                                <? $APPLICATION->IncludeComponent(
+                                    "bitrix:main.include",
+                                    "",
+                                    array(
+                                        "AREA_FILE_SHOW" => "file",
+                                        "AREA_FILE_SUFFIX" => "include",
+                                        "EDIT_TEMPLATE" => "",
+                                        "PATH" => "/include/phone.php"
+                                    )
+                                ); ?>
+                            </span>
                         </a>
                         <a href="#">
                             <span class="text-black fl-bigmug-line-email64"></span>
-                            <span class="d-none d-md-inline-block ml-2">info@domain.com</span>
+                            <span class="d-none d-md-inline-block ml-2">
+                                <? $APPLICATION->IncludeComponent(
+                                    "bitrix:main.include",
+                                    "",
+                                    array(
+                                        "AREA_FILE_SHOW" => "file",
+                                        "AREA_FILE_SUFFIX" => "include",
+                                        "EDIT_TEMPLATE" => "",
+                                        "PATH" => "/include/email.php"
+                                    )
+                                ); ?>
+                            </span>
                         </a>
                     </p>
                 </div>
                 <div class="col-6 col-md-6 text-right">
-                    <a href="#" class="mr-3"><span class="text-black icon-facebook"></span></a>
-                    <a href="#" class="mr-3"><span class="text-black icon-twitter"></span></a>
-                    <a href="#" class="mr-0"><span class="text-black icon-linkedin"></span></a>
+                    <? $APPLICATION->IncludeComponent(
+                        "bitrix:main.include",
+                        "",
+                        array(
+                            "AREA_FILE_SHOW" => "file",
+                            "AREA_FILE_SUFFIX" => "include",
+                            "EDIT_TEMPLATE" => "",
+                            "PATH" => "/include/social_header.php"
+                        )
+                    ); ?>
                 </div>
             </div>
         </div>
@@ -96,12 +125,37 @@ IncludeTemplateLangFile(__FILE__);
             <div class="row align-items-center">
                 <div class="col-8 col-md-8 col-lg-4">
                     <h1 class="">
-                        <a href="index.html" class="h5 text-uppercase text-black">
-                            <strong>HomeSpace<span class="text-danger">.</span></strong>
+                        <a href="<?= SITE_DIR ?>index.php" class="h5 text-uppercase text-black">
+                            <? $APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                "",
+                                array(
+                                    "AREA_FILE_SHOW" => "file",
+                                    "AREA_FILE_SUFFIX" => "include",
+                                    "EDIT_TEMPLATE" => "",
+                                    "PATH" => "/include/company_name.php"
+                                )
+                            ); ?>
                         </a>
                     </h1>
                 </div>
                 <div class="col-4 col-md-4 col-lg-8">
+                    <? $APPLICATION->IncludeComponent(
+                        "bitrix:menu",
+                        "horizontal_multilevel",
+                        array(
+                            "ALLOW_MULTI_SELECT" => "N",
+                            "CHILD_MENU_TYPE" => "left",
+                            "DELAY" => "N",
+                            "MAX_LEVEL" => "3",
+                            "MENU_CACHE_GET_VARS" => array(""),
+                            "MENU_CACHE_TIME" => "36000000",
+                            "MENU_CACHE_TYPE" => "A",
+                            "MENU_CACHE_USE_GROUPS" => "Y",
+                            "ROOT_MENU_TYPE" => "top",
+                            "USE_EXT" => "N"
+                        )
+                    ); ?>
                     <nav class="site-navigation text-right text-md-right" role="navigation">
 
                         <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3">
