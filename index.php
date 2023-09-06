@@ -3,6 +3,23 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Главная страница");
 ?>
 <? $APPLICATION->IncludeComponent(
+    "bitrix:main.include",
+    ".default",
+    array(
+        "AREA_FILE_SHOW" => "file",
+        "AREA_FILE_SUFFIX" => "include",
+        "EDIT_TEMPLATE" => "",
+        "COMPONENT_TEMPLATE" => ".default",
+        "PATH" => "/include/main_info.php"
+    ),
+    false
+); ?>
+
+<?
+$filterIsPreferredDeal = array(
+    "PROPERTY_IS_PREFERRED_DEAL_VALUE" => "Да",
+);
+$APPLICATION->IncludeComponent(
     "bitrix:news.list",
     ".default",
     array(
@@ -18,7 +35,7 @@ $APPLICATION->SetTitle("Главная страница");
         "CACHE_TIME" => "36000000",
         "CACHE_TYPE" => "A",
         "CHECK_DATES" => "Y",
-        "DETAIL_URL" => "/o-servise/novosti/#CODE#/",
+        "DETAIL_URL" => "/obyavleniya/#CODE#/",
         "DISPLAY_BOTTOM_PAGER" => "Y",
         "DISPLAY_DATE" => "N",
         "DISPLAY_NAME" => "Y",
@@ -29,10 +46,10 @@ $APPLICATION->SetTitle("Главная страница");
             0 => "",
             1 => "",
         ),
-        "FILTER_NAME" => "",
+        "FILTER_NAME" => "filterIsPreferredDeal",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "2",
-        "IBLOCK_TYPE" => "news",
+        "IBLOCK_ID" => "1",
+        "IBLOCK_TYPE" => "advertisements",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
         "MESSAGE_404" => "",
@@ -67,45 +84,8 @@ $APPLICATION->SetTitle("Главная страница");
         "FILE_404" => "/404.php"
     ),
     false
-); ?>
-<? $APPLICATION->IncludeComponent(
-    "bitrix:news.line",
-    ".default",
-    array(
-        "ACTIVE_DATE_FORMAT" => "d.m.Y",
-        "CACHE_GROUPS" => "Y",
-        "CACHE_TIME" => "300",
-        "CACHE_TYPE" => "A",
-        "COMPONENT_TEMPLATE" => ".default",
-        "DETAIL_URL" => "obyavleniya/#CODE#/",
-        "FIELD_CODE" => array(
-            0 => "PREVIEW_TEXT",
-            1 => "PREVIEW_PICTURE",
-            2 => "",
-        ),
-        "IBLOCKS" => array(),
-        "IBLOCK_TYPE" => "advertisements",
-        "NEWS_COUNT" => "9",
-        "SORT_BY1" => "ACTIVE_FROM",
-        "SORT_BY2" => "SORT",
-        "SORT_ORDER1" => "DESC",
-        "SORT_ORDER2" => "ASC"
-    ),
-    false
-); ?>
-<? $APPLICATION->IncludeComponent(
-    "bitrix:main.include",
-    ".default",
-    array(
-        "AREA_FILE_SHOW" => "file",
-        "AREA_FILE_SUFFIX" => "inc",
-        "EDIT_TEMPLATE" => "",
-        "COMPONENT_TEMPLATE" => ".default",
-        "PATH" => "/include/main_info.php"
-    ),
-    false
-); ?>
-
+);
+?>
     <div class="slide-one-item home-slider owl-carousel">
 
         <div class="site-blocks-cover" style="background-image: url(<?= SITE_DIR ?>upload/hero_bg_1.jpg);"
@@ -159,41 +139,76 @@ $APPLICATION->SetTitle("Главная страница");
             <div class="row">
                 <div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
                     <div class="feature d-flex align-items-start">
-                        <span class="icon mr-3 flaticon-house"></span>
-                        <div class="text">
-                            <h2 class="mt-0">Wide Range of Properties</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit rem sint debitis porro quae
-                                dolorum neque.
-                            </p>
-                        </div>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "include",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/feature_1.php"
+                            )
+                        ); ?>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
                     <div class="feature d-flex align-items-start">
-                        <span class="icon mr-3 flaticon-rent"></span>
-                        <div class="text">
-                            <h2 class="mt-0">Rent or Sale</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit rem sint debitis porro quae
-                                dolorum neque.
-                            </p>
-                        </div>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "include",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/feature_2.php"
+                            )
+                        ); ?>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
                     <div class="feature d-flex align-items-start">
-                        <span class="icon mr-3 flaticon-location"></span>
-                        <div class="text">
-                            <h2 class="mt-0">Property Location</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit rem sint debitis porro quae
-                                dolorum neque.
-                            </p>
-                        </div>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "include",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => "/include/feature_3.php"
+                            )
+                        ); ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="site-section site-section-sm bg-light">
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:news.line",
+            ".default",
+            array(
+                "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                "CACHE_GROUPS" => "Y",
+                "CACHE_TIME" => "36000000",
+                "CACHE_TYPE" => "A",
+                "COMPONENT_TEMPLATE" => ".default",
+                "DETAIL_URL" => "obyavleniya/#CODE#/",
+                "FIELD_CODE" => array(
+                    0 => "PREVIEW_TEXT",
+                    1 => "PREVIEW_PICTURE",
+                    2 => "",
+                ),
+                "IBLOCKS" => array(),
+                "IBLOCK_TYPE" => "advertisements",
+                "NEWS_COUNT" => "9",
+                "SORT_BY1" => "ACTIVE_FROM",
+                "SORT_BY2" => "SORT",
+                "SORT_ORDER1" => "DESC",
+                "SORT_ORDER2" => "ASC"
+            ),
+            false
+        ); ?>
         <div class="container">
             <div class="row mb-5">
                 <div class="col-12">
@@ -415,6 +430,31 @@ $APPLICATION->SetTitle("Главная страница");
     </div>
 
     <div class="site-section">
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:news.line",
+            ".default",
+            array(
+                "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                "CACHE_GROUPS" => "Y",
+                "CACHE_TIME" => "36000000",
+                "CACHE_TYPE" => "A",
+                "COMPONENT_TEMPLATE" => ".default",
+                "DETAIL_URL" => "",
+                "FIELD_CODE" => array(
+                    0 => "",
+                    1 => "PROPERTY_EXTERNAL_RESOURCE_LINK",
+                    2 => "",
+                ),
+                "IBLOCKS" => array(),
+                "IBLOCK_TYPE" => "services",
+                "NEWS_COUNT" => "6",
+                "SORT_BY1" => "ACTIVE_FROM",
+                "SORT_BY2" => "SORT",
+                "SORT_ORDER1" => "DESC",
+                "SORT_ORDER2" => "ASC"
+            ),
+            false
+        ); ?>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-7 text-center mb-5">
@@ -473,6 +513,25 @@ $APPLICATION->SetTitle("Главная страница");
     </div>
 
     <div class="site-section bg-light">
+        <? $APPLICATION->IncludeComponent(
+            "bitrix:news.line",
+            "",
+            array(
+                "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                "CACHE_GROUPS" => "Y",
+                "CACHE_TIME" => "36000000",
+                "CACHE_TYPE" => "A",
+                "DETAIL_URL" => "",
+                "FIELD_CODE" => array("", ""),
+                "IBLOCKS" => array("2"),
+                "IBLOCK_TYPE" => "news",
+                "NEWS_COUNT" => "3",
+                "SORT_BY1" => "ACTIVE_FROM",
+                "SORT_BY2" => "SORT",
+                "SORT_ORDER1" => "DESC",
+                "SORT_ORDER2" => "ASC"
+            )
+        ); ?>
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 text-center">
