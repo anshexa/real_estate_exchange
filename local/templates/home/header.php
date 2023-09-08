@@ -3,7 +3,7 @@
 IncludeTemplateLangFile(__FILE__);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= LANGUAGE_ID ?>">
 
 <head>
     <title><? $APPLICATION->ShowTitle() ?></title>
