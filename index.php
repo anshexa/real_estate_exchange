@@ -190,7 +190,7 @@ $APPLICATION->IncludeComponent(
             array(
                 "ACTIVE_DATE_FORMAT" => "d.m.Y",
                 "CACHE_GROUPS" => "Y",
-                "CACHE_TIME" => "36000000",
+                "CACHE_TIME" => "1210000",
                 "CACHE_TYPE" => "A",
                 "COMPONENT_TEMPLATE" => ".default",
                 "DETAIL_URL" => "obyavleniya/#CODE#/",
