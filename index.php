@@ -167,89 +167,32 @@ $APPLICATION->IncludeComponent(
     false
 ); ?>
 
+<? $APPLICATION->IncludeComponent(
+    "bitrix:news.line",
+    "services_main",
+    array(
+        "ACTIVE_DATE_FORMAT" => "d.m.Y",    // Формат показа даты
+        "CACHE_GROUPS" => "Y",    // Учитывать права доступа
+        "CACHE_TIME" => "36000000",    // Время кеширования (сек.)
+        "CACHE_TYPE" => "A",    // Тип кеширования
+        "COMPONENT_TEMPLATE" => "services_main",
+        "DETAIL_URL" => "",    // URL, ведущий на страницу с содержимым элемента раздела
+        "FIELD_CODE" => array(    // Поля
+            0 => "",
+            1 => "PROPERTY_EXTERNAL_RESOURCE_LINK",
+            2 => "",
+        ),
+        "IBLOCKS" => "",    // Код информационного блока
+        "IBLOCK_TYPE" => "services",    // Тип информационного блока
+        "NEWS_COUNT" => "6",    // Количество новостей на странице
+        "SORT_BY1" => "ACTIVE_FROM",    // Поле для первой сортировки новостей
+        "SORT_BY2" => "SORT",    // Поле для второй сортировки новостей
+        "SORT_ORDER1" => "DESC",    // Направление для первой сортировки новостей
+        "SORT_ORDER2" => "ASC",    // Направление для второй сортировки новостей
+    ),
+    false
+); ?>
 
-    <div class="site-section">
-        <? $APPLICATION->IncludeComponent(
-            "bitrix:news.line",
-            ".default",
-            array(
-                "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                "CACHE_GROUPS" => "Y",
-                "CACHE_TIME" => "36000000",
-                "CACHE_TYPE" => "A",
-                "COMPONENT_TEMPLATE" => ".default",
-                "DETAIL_URL" => "",
-                "FIELD_CODE" => array(
-                    0 => "",
-                    1 => "PROPERTY_EXTERNAL_RESOURCE_LINK",
-                    2 => "",
-                ),
-                "IBLOCKS" => array(),
-                "IBLOCK_TYPE" => "services",
-                "NEWS_COUNT" => "6",
-                "SORT_BY1" => "ACTIVE_FROM",
-                "SORT_BY2" => "SORT",
-                "SORT_ORDER1" => "DESC",
-                "SORT_ORDER2" => "ASC"
-            ),
-            false
-        ); ?>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-7 text-center mb-5">
-                    <div class="site-section-title">
-                        <h2>Our Services</h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="#" class="service text-center border rounded">
-                        <span class="icon flaticon-house"></span>
-                        <h2 class="service-heading">Research Subburbs</h2>
-                        <p><span class="read-more">Learn More</span></p>
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="#" class="service text-center border rounded">
-                        <span class="icon flaticon-sold"></span>
-                        <h2 class="service-heading">Sold Houses</h2>
-                        <p><span class="read-more">Learn More</span></p>
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="#" class="service text-center border rounded">
-                        <span class="icon flaticon-camera"></span>
-                        <h2 class="service-heading">Security Priority</h2>
-                        <p><span class="read-more">Learn More</span></p>
-                    </a>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="#" class="service text-center border rounded">
-                        <span class="icon flaticon-house"></span>
-                        <h2 class="service-heading">Research Subburbs</h2>
-                        <p><span class="read-more">Learn More</span></p>
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="#" class="service text-center border rounded">
-                        <span class="icon flaticon-sold"></span>
-                        <h2 class="service-heading">Sold Houses</h2>
-                        <p><span class="read-more">Learn More</span></p>
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="#" class="service text-center border rounded">
-                        <span class="icon flaticon-camera"></span>
-                        <h2 class="service-heading">Security Priority</h2>
-                        <p><span class="read-more">Learn More</span></p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="site-section bg-light">
         <? $APPLICATION->IncludeComponent(
