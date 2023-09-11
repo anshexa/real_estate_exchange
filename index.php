@@ -137,251 +137,36 @@ $APPLICATION->IncludeComponent(
         </div>
     </div>
 
-    <div class="site-section site-section-sm bg-light">
-        <? $APPLICATION->IncludeComponent(
-            "bitrix:news.line",
-            ".default",
-            array(
-                "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                "CACHE_GROUPS" => "Y",
-                "CACHE_TIME" => "1210000",
-                "CACHE_TYPE" => "A",
-                "COMPONENT_TEMPLATE" => ".default",
-                "DETAIL_URL" => "obyavleniya/#CODE#/",
-                "FIELD_CODE" => array(
-                    0 => "PREVIEW_TEXT",
-                    1 => "PREVIEW_PICTURE",
-                    2 => "",
-                ),
-                "IBLOCKS" => array(),
-                "IBLOCK_TYPE" => "advertisements",
-                "NEWS_COUNT" => "9",
-                "SORT_BY1" => "ACTIVE_FROM",
-                "SORT_BY2" => "SORT",
-                "SORT_ORDER1" => "DESC",
-                "SORT_ORDER2" => "ASC"
-            ),
-            false
-        ); ?>
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-12">
-                    <div class="site-section-title">
-                        <h2>New Properties for You</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-5">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="property-details.html" class="prop-entry d-block">
-                        <figure>
-                            <img src="<?= SITE_DIR ?>upload/img_1.jpg" alt="Image" class="img-fluid">
-                        </figure>
-                        <div class="prop-text">
-                            <div class="inner">
-                                <span class="price rounded">$1,930,000</span>
-                                <h3 class="title">853 S Lucerne Blvd</h3>
-                                <p class="location">Los Angeles, CA 90005</p>
-                            </div>
-                            <div class="prop-more-info">
-                                <div class="inner d-flex">
-                                    <div class="col">
-                                        <span>Area:</span>
-                                        <strong>240m<sup>2</sup></strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Beds:</span>
-                                        <strong>2</strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Baths:</span>
-                                        <strong>2</strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Garages:</span>
-                                        <strong>1</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="property-details.html" class="prop-entry d-block">
-                        <figure>
-                            <img src="<?= SITE_DIR ?>upload/img_2.jpg" alt="Image" class="img-fluid">
-                        </figure>
-                        <div class="prop-text">
-                            <div class="inner">
-                                <span class="price rounded">$2,438,000</span>
-                                <h3 class="title">853 S Lucerne Blvd</h3>
-                                <p class="location">Los Angeles, CA 90005</p>
-                            </div>
-                            <div class="prop-more-info">
-                                <div class="inner d-flex">
-                                    <div class="col">
-                                        <span>Area:</span>
-                                        <strong>240m<sup>2</sup></strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Beds:</span>
-                                        <strong>2</strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Baths:</span>
-                                        <strong>2</strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Garages:</span>
-                                        <strong>1</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="property-details.html" class="prop-entry d-block">
-                        <figure>
-                            <img src="<?= SITE_DIR ?>upload/img_3.jpg" alt="Image" class="img-fluid">
-                        </figure>
-                        <div class="prop-text">
-                            <div class="inner">
-                                <span class="price rounded">$5,320,000</span>
-                                <h3 class="title">853 S Lucerne Blvd</h3>
-                                <p class="location">Los Angeles, CA 90005</p>
-                            </div>
-                            <div class="prop-more-info">
-                                <div class="inner d-flex">
-                                    <div class="col">
-                                        <span>Area:</span>
-                                        <strong>240m<sup>2</sup></strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Beds:</span>
-                                        <strong>2</strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Baths:</span>
-                                        <strong>2</strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Garages:</span>
-                                        <strong>1</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+<? $APPLICATION->IncludeComponent(
+    "bitrix:news.line",
+    "latest_announcements_main",
+    array(
+        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+        "CACHE_GROUPS" => "Y",
+        "CACHE_TIME" => "1210000",
+        "CACHE_TYPE" => "A",
+        "COMPONENT_TEMPLATE" => "latest_announcements_main",
+        "DETAIL_URL" => "obyavleniya/#CODE#/",
+        "FIELD_CODE" => array(
+            0 => "PREVIEW_TEXT",
+            1 => "PREVIEW_PICTURE",
+            2 => "PROPERTY_PRICE",
+            3 => "PROPERTY_TOTAL_AREA",
+            4 => "PROPERTY_NUMBER_OF_FLOORS",
+            5 => "PROPERTY_NUMBER_OF_BATHROOMS",
+            6 => "PROPERTY_IS_AVAILABLE_GARAGE",
+        ),
+        "IBLOCKS" => array(),
+        "IBLOCK_TYPE" => "advertisements",
+        "NEWS_COUNT" => "9",
+        "SORT_BY1" => "ACTIVE_FROM",
+        "SORT_BY2" => "SORT",
+        "SORT_ORDER1" => "DESC",
+        "SORT_ORDER2" => "ASC"
+    ),
+    false
+); ?>
 
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="property-details.html" class="prop-entry d-block">
-                        <figure>
-                            <img src="<?= SITE_DIR ?>upload/img_4.jpg" alt="Image" class="img-fluid">
-                        </figure>
-                        <div class="prop-text">
-                            <div class="inner">
-                                <span class="price rounded">$2,350,000</span>
-                                <h3 class="title">853 S Lucerne Blvd</h3>
-                                <p class="location">Los Angeles, CA 90005</p>
-                            </div>
-                            <div class="prop-more-info">
-                                <div class="inner d-flex">
-                                    <div class="col">
-                                        <span>Area:</span>
-                                        <strong>240m<sup>2</sup></strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Beds:</span>
-                                        <strong>2</strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Baths:</span>
-                                        <strong>2</strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Garages:</span>
-                                        <strong>1</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="property-details.html" class="prop-entry d-block">
-                        <figure>
-                            <img src="<?= SITE_DIR ?>upload/img_5.jpg" alt="Image" class="img-fluid">
-                        </figure>
-                        <div class="prop-text">
-                            <div class="inner">
-                                <span class="price rounded">$1,550,000</span>
-                                <h3 class="title">853 S Lucerne Blvd</h3>
-                                <p class="location">Los Angeles, CA 90005</p>
-                            </div>
-                            <div class="prop-more-info">
-                                <div class="inner d-flex">
-                                    <div class="col">
-                                        <span>Area:</span>
-                                        <strong>240m<sup>2</sup></strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Beds:</span>
-                                        <strong>2</strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Baths:</span>
-                                        <strong>2</strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Garages:</span>
-                                        <strong>1</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <a href="property-details.html" class="prop-entry d-block">
-                        <figure>
-                            <img src="<?= SITE_DIR ?>upload/img_6.jpg" alt="Image" class="img-fluid">
-                        </figure>
-                        <div class="prop-text">
-                            <div class="inner">
-                                <span class="price rounded">$4,291,000</span>
-                                <h3 class="title">853 S Lucerne Blvd</h3>
-                                <p class="location">Los Angeles, CA 90005</p>
-                            </div>
-                            <div class="prop-more-info">
-                                <div class="inner d-flex">
-                                    <div class="col">
-                                        <span>Area:</span>
-                                        <strong>240m<sup>2</sup></strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Beds:</span>
-                                        <strong>2</strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Baths:</span>
-                                        <strong>2</strong>
-                                    </div>
-                                    <div class="col">
-                                        <span>Garages:</span>
-                                        <strong>1</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
 
     <div class="site-section">
         <? $APPLICATION->IncludeComponent(
