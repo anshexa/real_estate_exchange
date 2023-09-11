@@ -2,18 +2,6 @@
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Главная страница");
 ?>
-<? $APPLICATION->IncludeComponent(
-    "bitrix:main.include",
-    ".default",
-    array(
-        "AREA_FILE_SHOW" => "file",
-        "AREA_FILE_SUFFIX" => "include",
-        "EDIT_TEMPLATE" => "",
-        "COMPONENT_TEMPLATE" => ".default",
-        "PATH" => "/include/main_info.php"
-    ),
-    false
-); ?>
 
 <?
 $filterIsPreferredDeal = array(
