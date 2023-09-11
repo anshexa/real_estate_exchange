@@ -193,81 +193,32 @@ $APPLICATION->IncludeComponent(
     false
 ); ?>
 
-
-    <div class="site-section bg-light">
-        <? $APPLICATION->IncludeComponent(
-            "bitrix:news.line",
-            "",
-            array(
-                "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                "CACHE_GROUPS" => "Y",
-                "CACHE_TIME" => "36000000",
-                "CACHE_TYPE" => "A",
-                "DETAIL_URL" => "",
-                "FIELD_CODE" => array("", ""),
-                "IBLOCKS" => array("2"),
-                "IBLOCK_TYPE" => "news",
-                "NEWS_COUNT" => "3",
-                "SORT_BY1" => "ACTIVE_FROM",
-                "SORT_BY2" => "SORT",
-                "SORT_ORDER1" => "DESC",
-                "SORT_ORDER2" => "ASC"
-            )
-        ); ?>
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-md-7 text-center">
-                    <div class="site-section-title">
-                        <h2>Our Blog</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="100">
-                    <a href="#"><img src="<?= SITE_DIR ?>upload/img_4.jpg" alt="Image" class="img-fluid"></a>
-                    <div class="p-4 bg-white">
-                        <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
-                        <h2 class="h5 text-black mb-3">
-                            <a href="#">When To Sell &amp; How Much To Sell?</a>
-                        </h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias enim, ipsa exercitationem
-                            veniam quae
-                            sunt.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="200">
-                    <a href="#"><img src="<?= SITE_DIR ?>upload/img_2.jpg" alt="Image" class="img-fluid"></a>
-                    <div class="p-4 bg-white">
-                        <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
-                        <h2 class="h5 text-black mb-3">
-                            <a href="#">
-                                When To Sell &amp; How Much To Sell?
-                            </a>
-                        </h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias enim, ipsa exercitationem
-                            veniam quae
-                            sunt.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="300">
-                    <a href="#"><img src="<?= SITE_DIR ?>upload/img_3.jpg" alt="Image" class="img-fluid"></a>
-                    <div class="p-4 bg-white">
-                        <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
-                        <h2 class="h5 text-black mb-3">
-                            <a href="#">When To Sell &amp; How Much To Sell?</a>
-                        </h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias enim, ipsa exercitationem
-                            veniam quae
-                            sunt.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
+<? $APPLICATION->IncludeComponent(
+    "bitrix:news.line",
+    "news_main",
+    array(
+        "ACTIVE_DATE_FORMAT" => "d.m.Y",    // Формат показа даты
+        "CACHE_GROUPS" => "Y",    // Учитывать права доступа
+        "CACHE_TIME" => "36000000",    // Время кеширования (сек.)
+        "CACHE_TYPE" => "A",    // Тип кеширования
+        "DETAIL_URL" => "",    // URL, ведущий на страницу с содержимым элемента раздела
+        "FIELD_CODE" => array(    // Поля
+            0 => "PREVIEW_TEXT",
+            1 => "PREVIEW_PICTURE",
+            2 => "DATE_ACTIVE_FROM",
+            3 => "",
+        ),
+        "IBLOCKS" => array(    // Код информационного блока
+            0 => "2",
+        ),
+        "IBLOCK_TYPE" => "news",    // Тип информационного блока
+        "NEWS_COUNT" => "3",    // Количество новостей на странице
+        "SORT_BY1" => "ACTIVE_FROM",    // Поле для первой сортировки новостей
+        "SORT_BY2" => "SORT",    // Поле для второй сортировки новостей
+        "SORT_ORDER1" => "DESC",    // Направление для первой сортировки новостей
+        "SORT_ORDER2" => "ASC",    // Направление для второй сортировки новостей
+    ),
+    false
+); ?>
 
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
