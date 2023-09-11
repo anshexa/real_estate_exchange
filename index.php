@@ -87,55 +87,55 @@ $APPLICATION->IncludeComponent(
 );
 ?>
 
-    <div class="py-5">
-        <div class="container">
+<div class="py-5">
+    <div class="container">
 
-            <div class="row">
-                <div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
-                    <div class="feature d-flex align-items-start">
-                        <? $APPLICATION->IncludeComponent(
-                            "bitrix:main.include",
-                            "",
-                            array(
-                                "AREA_FILE_SHOW" => "file",
-                                "AREA_FILE_SUFFIX" => "include",
-                                "EDIT_TEMPLATE" => "",
-                                "PATH" => "/include/feature_1.php"
-                            )
-                        ); ?>
-                    </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
+                <div class="feature d-flex align-items-start">
+                    <? $APPLICATION->IncludeComponent(
+                        "bitrix:main.include",
+                        "",
+                        array(
+                            "AREA_FILE_SHOW" => "file",
+                            "AREA_FILE_SUFFIX" => "include",
+                            "EDIT_TEMPLATE" => "",
+                            "PATH" => "/include/feature_1.php"
+                        )
+                    ); ?>
                 </div>
-                <div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
-                    <div class="feature d-flex align-items-start">
-                        <? $APPLICATION->IncludeComponent(
-                            "bitrix:main.include",
-                            "",
-                            array(
-                                "AREA_FILE_SHOW" => "file",
-                                "AREA_FILE_SUFFIX" => "include",
-                                "EDIT_TEMPLATE" => "",
-                                "PATH" => "/include/feature_2.php"
-                            )
-                        ); ?>
-                    </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
+                <div class="feature d-flex align-items-start">
+                    <? $APPLICATION->IncludeComponent(
+                        "bitrix:main.include",
+                        "",
+                        array(
+                            "AREA_FILE_SHOW" => "file",
+                            "AREA_FILE_SUFFIX" => "include",
+                            "EDIT_TEMPLATE" => "",
+                            "PATH" => "/include/feature_2.php"
+                        )
+                    ); ?>
                 </div>
-                <div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
-                    <div class="feature d-flex align-items-start">
-                        <? $APPLICATION->IncludeComponent(
-                            "bitrix:main.include",
-                            "",
-                            array(
-                                "AREA_FILE_SHOW" => "file",
-                                "AREA_FILE_SUFFIX" => "include",
-                                "EDIT_TEMPLATE" => "",
-                                "PATH" => "/include/feature_3.php"
-                            )
-                        ); ?>
-                    </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-3 mb-lg-0">
+                <div class="feature d-flex align-items-start">
+                    <? $APPLICATION->IncludeComponent(
+                        "bitrix:main.include",
+                        "",
+                        array(
+                            "AREA_FILE_SHOW" => "file",
+                            "AREA_FILE_SUFFIX" => "include",
+                            "EDIT_TEMPLATE" => "",
+                            "PATH" => "/include/feature_3.php"
+                        )
+                    ); ?>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 <? $APPLICATION->IncludeComponent(
     "bitrix:news.line",
