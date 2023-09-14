@@ -166,7 +166,7 @@ $APPLICATION->IncludeComponent(
         "COMPONENT_TEMPLATE" => "services_main",
         "DETAIL_URL" => "",    // URL, ведущий на страницу с содержимым элемента раздела
         "FIELD_CODE" => array(    // Поля
-            0 => "",
+            0 => "PREVIEW_PICTURE",
             1 => "PROPERTY_EXTERNAL_RESOURCE_LINK",
             2 => "",
         ),
