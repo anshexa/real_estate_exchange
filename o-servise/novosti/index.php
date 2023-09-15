@@ -40,7 +40,7 @@ $APPLICATION->SetTitle("Новости");
         "DISPLAY_PREVIEW_TEXT" => "Y",
         "DISPLAY_TOP_PAGER" => "N",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "2",
+        "IBLOCK_ID" => "1",
         "IBLOCK_TYPE" => "news",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",

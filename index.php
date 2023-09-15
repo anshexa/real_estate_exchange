@@ -23,7 +23,7 @@ $APPLICATION->IncludeComponent(
         "CACHE_TIME" => "36000000",
         "CACHE_TYPE" => "A",
         "CHECK_DATES" => "Y",
-        "DETAIL_URL" => "/obyavleniya/#CODE#/",
+        "DETAIL_URL" => "/obyavleniya/#ELEMENT_CODE#/",
         "DISPLAY_BOTTOM_PAGER" => "Y",
         "DISPLAY_DATE" => "N",
         "DISPLAY_NAME" => "Y",
@@ -36,7 +36,7 @@ $APPLICATION->IncludeComponent(
         ),
         "FILTER_NAME" => "filterIsPreferredDeal",
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-        "IBLOCK_ID" => "1",
+        "IBLOCK_ID" => "5",
         "IBLOCK_TYPE" => "advertisements",
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "INCLUDE_SUBSECTIONS" => "N",
@@ -197,7 +197,7 @@ $APPLICATION->IncludeComponent(
             3 => "",
         ),
         "IBLOCKS" => array(    // Код информационного блока
-            0 => "2",
+            0 => "1",
         ),
         "IBLOCK_TYPE" => "news",    // Тип информационного блока
         "NEWS_COUNT" => "3",    // Количество новостей на странице
