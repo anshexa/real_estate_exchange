@@ -1,5 +1,6 @@
 <?
 $MESS["NEW_ANNOUNCEMENTS"] = "New announcements";
+$MESS["MY_ANNOUNCEMENTS"] = "My announcements";
 $MESS["AREA"] = "Area:";
 $MESS["METER"] = "m";
 $MESS["FLOORS"] = "Floors:";

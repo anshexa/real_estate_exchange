@@ -1,5 +1,6 @@
 <?
 $MESS["NEW_ANNOUNCEMENTS"] = "Новые объявления";
+$MESS["MY_ANNOUNCEMENTS"] = "Мои объявления";
 $MESS["AREA"] = "Площадь:";
 $MESS["METER"] = "м";
 $MESS["FLOORS"] = "Этажей:";

@@ -20,7 +20,11 @@ $this->setFrameMode(true);
         <div class="row mb-5">
             <div class="col-12">
                 <div class="site-section-title">
-                    <h2><?= GetMessage("NEW_ANNOUNCEMENTS") ?></h2>
+                    <? if ($APPLICATION->GetCurPage(false) == "/lichnyy-kabinet-prodavtsa/moi-obyavleniya/"):  ?>
+                        <h2><?= GetMessage("MY_ANNOUNCEMENTS") ?></h2>
+                    <? else: ?>
+                        <h2><?= GetMessage("NEW_ANNOUNCEMENTS") ?></h2>
+                    <? endif; ?>
                 </div>
             </div>
         </div>
