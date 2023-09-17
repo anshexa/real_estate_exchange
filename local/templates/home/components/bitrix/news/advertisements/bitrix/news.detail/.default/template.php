@@ -41,9 +41,8 @@ $this->setFrameMode(true);
 
                 <div class="mb-5">
                     <div class="slide-one-item home-slider owl-carousel">
-                        <?
-                        if ($arResult["DISPLAY_PROPERTIES"]["IMAGES"]["FILE_VALUE"]):
-                            $fileProperties = getFilesProperties($arResult["DISPLAY_PROPERTIES"]["IMAGES"]["FILE_VALUE"]);
+                        <? if ($arResult["DISPLAY_PROPERTIES"]["IMAGES"]["FILE_VALUE"]):
+                            $fileProperties = getFilesProperties($arResult["DISPLAY_PROPERTIES"]["IMAGES"]);
 
                             foreach ($fileProperties as $image): ?>
                                 <div>
@@ -107,12 +106,11 @@ $this->setFrameMode(true);
                     <?= $arResult["DETAIL_TEXT"] ?>
 
                     <div class="row mt-5">
-                        <div class="col-12">
-                            <h2 class="h4 text-black mb-3"><?= GetMessage("PROPERTY_GALLERY") ?></h2>
-                        </div>
-
-                        <? if ($arResult["DISPLAY_PROPERTIES"]["IMAGES"]):
-                            $fileProperties = getFilesProperties($arResult["DISPLAY_PROPERTIES"]["IMAGES"]["FILE_VALUE"]);
+                        <? if ($arResult["DISPLAY_PROPERTIES"]["IMAGES"]): ?>
+                            <div class="col-12">
+                                <h2 class="h4 text-black mb-3"><?= GetMessage("PROPERTY_GALLERY") ?></h2>
+                            </div>
+                            <? $fileProperties = getFilesProperties($arResult["DISPLAY_PROPERTIES"]["IMAGES"]);
 
                             foreach ($fileProperties as $image): ?>
                                 <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
@@ -125,7 +123,7 @@ $this->setFrameMode(true);
                     </div>
                 </div>
                 <? if ($arResult["DISPLAY_PROPERTIES"]["ADDITIONAL_MATERIALS"]):
-                    $fileProperties = getFilesProperties($arResult["DISPLAY_PROPERTIES"]["ADDITIONAL_MATERIALS"]["FILE_VALUE"]);
+                    $fileProperties = getFilesProperties($arResult["DISPLAY_PROPERTIES"]["ADDITIONAL_MATERIALS"]);
 
                     foreach ($fileProperties as $additionalMaterial): ?>
                         <div>
@@ -136,7 +134,7 @@ $this->setFrameMode(true);
                     <? endforeach ?>
                 <? endif ?>
 
-                <? if ($arResult["DISPLAY_PROPERTIES"]["ADDITIONAL_MATERIALS"]):
+                <? if ($arResult["DISPLAY_PROPERTIES"]["LINKS_TO_RESOURCES"]):
                     foreach ($arResult["DISPLAY_PROPERTIES"]["LINKS_TO_RESOURCES"]["VALUE"] as $link): ?>
                         <div>
                             <a href="<?= $link ?>"><?= $link ?></a>
@@ -186,17 +184,16 @@ $this->setFrameMode(true);
 
 <?php
 /**
- * @param $FILE_VALUE
+ * @param array $propertyWithTypeFile
  * @return array
  */
-function getFilesProperties($FILE_VALUE): array {
+function getFilesProperties(array $propertyWithTypeFile): array {
     $fileProperties = array();
-    $isFileSingle = $FILE_VALUE["SRC"] ? true : false;
-    if ($isFileSingle) {
-        $fileProperties[0] = $FILE_VALUE;
+    if (count($propertyWithTypeFile["VALUE"]) == 1) {
+        $fileProperties[0] = $propertyWithTypeFile["FILE_VALUE"];
     }
     else {
-        $fileProperties = array_merge($fileProperties, $FILE_VALUE);
+        $fileProperties = array_merge($fileProperties, $propertyWithTypeFile["FILE_VALUE"]);
     }
     return $fileProperties;
 }
