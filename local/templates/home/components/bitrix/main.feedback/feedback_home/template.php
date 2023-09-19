@@ -20,7 +20,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
         <div class="mf-ok-text"><?= $arResult["OK_MESSAGE"] ?></div><?
     } ?>
 
-    <form action="<?= POST_FORM_ACTION_URI ?>" class="p-5 bg-white border">
+    <form action="<?= POST_FORM_ACTION_URI ?>" class="p-5 bg-white border" method="post">
         <?= bitrix_sessid_post() ?>
 
         <div class="row form-group">
