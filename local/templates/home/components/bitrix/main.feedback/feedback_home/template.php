@@ -28,11 +28,14 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
                 <label class="font-weight-bold" for="fullname">
                     <?= GetMessage("NAME") ?>
                 </label>
-                <? if (empty($arParams["REQUIRED_FIELDS"]) ||
-                    in_array("NAME", $arParams["REQUIRED_FIELDS"])): ?>
+                <? $required = "";
+                if (empty($arParams["REQUIRED_FIELDS"]) ||
+                    in_array("NAME", $arParams["REQUIRED_FIELDS"])):
+                    $required = "required" ?>
                     <span>*</span>
                 <? endif ?>
-                <input type="text" id="fullname" class="form-control"
+                <input type="text" id="fullname" name="user_name"
+                       class="form-control" <?= $required ?>
                        placeholder="<?= GetMessage("NAME") ?>"
                        value="<?= $arResult["AUTHOR_NAME"] ?>">
             </div>
@@ -42,11 +45,14 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
                 <label class="font-weight-bold" for="email">
                     <?= GetMessage("EMAIL") ?>
                 </label>
-                <? if (empty($arParams["REQUIRED_FIELDS"]) ||
-                    in_array("EMAIL", $arParams["REQUIRED_FIELDS"])): ?>
+                <? $required = "";
+                if (empty($arParams["REQUIRED_FIELDS"]) ||
+                    in_array("EMAIL", $arParams["REQUIRED_FIELDS"])):
+                    $required = "required" ?>
                     <span>*</span>
                 <? endif ?>
-                <input type="email" id="email" class="form-control"
+                <input type="email" id="email" name="user_email"
+                       class="form-control" <?= $required ?>
                        placeholder="<?= GetMessage("EMAIL") ?>"
                        value="<?= $arResult["AUTHOR_EMAIL"] ?>">
             </div>
@@ -57,14 +63,16 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
                 <label class="font-weight-bold" for="message">
                     <?= GetMessage("MESSAGE") ?>
                 </label>
-                <? if (empty($arParams["REQUIRED_FIELDS"]) ||
-                    in_array("MESSAGE", $arParams["REQUIRED_FIELDS"])): ?>
+                <? $required = "";
+                if (empty($arParams["REQUIRED_FIELDS"]) ||
+                    in_array("MESSAGE", $arParams["REQUIRED_FIELDS"])):
+                    $required = "required" ?>
                     <span>*</span>
                 <? endif ?>
-                <textarea name="message" id="message" cols="30" rows="5" class="form-control"
-                          placeholder="<?= GetMessage("SAY_HELLO") ?>">
-                    <?= $arResult["MESSAGE"] ?>
-                </textarea>
+                <textarea id="message" name="MESSAGE" cols="30" rows="5"
+                          class="form-control" <?= $required ?>
+                          placeholder="<?= GetMessage("SAY_HELLO") ?>"
+                ><?= $arResult["MESSAGE"] ?></textarea>
             </div>
         </div>
 
@@ -84,7 +92,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
         <div class="row form-group">
             <div class="col-md-12">
-                <input type="submit" class="btn btn-primary  py-2 px-4 rounded-0"
+                <input type="submit" name="submit" class="btn btn-primary  py-2 px-4 rounded-0"
                        value="<?= GetMessage("SUBMIT") ?>">
             </div>
         </div>
