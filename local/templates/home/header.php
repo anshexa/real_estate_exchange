@@ -94,7 +94,21 @@ IncludeTemplateLangFile(__FILE__);
                         ); ?>
                     </p>
                 </div>
+
                 <div class="col-6 col-md-6 text-right">
+                    <? if ($USER->IsAuthorized()): ?>
+                        <a href="<?= $APPLICATION->GetCurPageParam(
+                            "logout=yes&" . bitrix_sessid_get(),
+                            array(
+                                "login",
+                                "logout",
+                                "register",
+                                "forgot_password",
+                                "change_password")); ?>" class="mr-3">Выйти</a>
+                    <? else: ?>
+                        <a href="/login/" class="mr-3">Вход и регистрация</a>
+                    <? endif; ?>
+
                     <? $APPLICATION->IncludeComponent(
                         "bitrix:main.include",
                         "",
@@ -106,6 +120,7 @@ IncludeTemplateLangFile(__FILE__);
                         )
                     ); ?>
                 </div>
+
             </div>
         </div>
 
@@ -180,4 +195,4 @@ IncludeTemplateLangFile(__FILE__);
             </div>
         </div>
     <? endif; ?>
-</div>
+
