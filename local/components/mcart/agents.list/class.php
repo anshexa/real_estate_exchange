@@ -19,6 +19,7 @@ use \Bitrix\Main\Localization\Loc;
 use \Bitrix\Highloadblock\HighloadBlockTable;
 use \Bitrix\Main\Engine\ActionFilter;
 
+
 class AgentsList extends CBitrixComponent implements Controllerable, Errorable
 {
     protected ErrorCollection $errorCollection;
@@ -93,12 +94,19 @@ class AgentsList extends CBitrixComponent implements Controllerable, Errorable
             );
         }
 
-
         /*
-         * Нужно проверить, что заданы значения в $arParams "Время кеширования" и "Количество элементов"
-         * Если не заданы, то указать дефолтные значения
+         * Проверяем, что заданы значения в $arParams "Время кеширования" и "Количество элементов"
+         * Если не заданы, указываем дефолтные значения
          */
+        $defaultAgentsCount = '20';
+        if (empty($arParams['AGENTS_COUNT'])) {
+            $arParams['AGENTS_COUNT'] = $defaultAgentsCount;
+        }
 
+        $defaultCacheTime = 36000000;
+        if (empty($arParams['CACHE_TIME'])) {
+            $arParams['CACHE_TIME'] = $defaultCacheTime;
+        }
 
         return parent::onPrepareComponentParams($arParams);
     }
@@ -119,9 +127,13 @@ class AgentsList extends CBitrixComponent implements Controllerable, Errorable
         if (empty($this->arParams["HLBLOCK_TNAME"])) {
             /**
              * Если параметр Название таблицы (TABLE_NAME) Highload-блока не задан,
-             * нужно отдать ошибку (Loc::getMessage('MCART_AGENTS_LIST_NOT_HLBLOCK_TNAME')).
-             * Пример как создать ошибку есть выше при проверки подключения модуля "highloadblock"
+             * отдаем ошибку.
              */
+            $this->addError(
+                new Error(
+                    Loc::getMessage('MCART_AGENTS_LIST_NOT_HLBLOCK_TNAME'),
+                    404)
+            );
         }
 
         if ($this->showErrors()) {
@@ -145,7 +157,8 @@ class AgentsList extends CBitrixComponent implements Controllerable, Errorable
             $this->taggedCache->registerTag('hlblock_table_name_' . $arHlblock['TABLE_NAME']); // Регистрируем кеш, чтобы по нему на событиях добавление/изменение/удаление элементов хлблока сбрасывать кеш компонента
 
             $entity = self::getEntityDataClassById($arHlblock); // получить класс для работы с хлблоком
-            $arTypeAgents = self::getFieldListValue($arHlblock, 'UF_TYPE'); // получить массив со значениями списочного свойства Виды деятельности агентов
+            $typeAgentsFieldName = 'UF_EMPLOYMENT';
+            $arTypeAgents = self::getFieldListValue($arHlblock, $typeAgentsFieldName); // получить массив со значениями списочного свойства Виды деятельности агентов
             $this->arResult['AGENTS'] = $this->getAgents($entity, $arTypeAgents); // получить массив со списком агентов и объектом для пагинации
 
 
@@ -158,18 +171,10 @@ class AgentsList extends CBitrixComponent implements Controllerable, Errorable
             $this->cache->endDataCache($this->arResult); // запись arResult в кеш
         }
 
-        /*
-         * Получить Избранных агентов для текущего пользователя записать их в массив $this->arResult['STAR_AGENTS']
-         * Это можно сделать с помощью CUserOptions::GetOption
-         */ 
-         $this->arResult['STAR_AGENTS'] = CUserOptions::GetOption($category, $name);
-        /*
-         * Данного метода нет в документации, код метода и его параметры можно найти в ядре (/bitrix/modules/main/) или в гугле
-         * $category - это категория настройки, можете придумать любую, например mcart_agent
-         * $name - это название настройки, например options_agents_star
-         * Эти настройки хранятся в таблице b_user_option
-         */
-
+        // Получаем Избранных агентов для текущего пользователя
+        $category = 'mcart_agent';  // категория настройки
+        $name = 'options_agents_star';  // название настройки
+        $this->arResult['STAR_AGENTS'] = CUserOptions::GetOption($category, $name);
 
         $this->IncludeComponentTemplate(); // вызов шаблона компонента
     }
@@ -191,7 +196,7 @@ class AgentsList extends CBitrixComponent implements Controllerable, Errorable
          */
         $result = HighloadBlockTable::getList([
             'filter' => [
-                // Указать фильтр по полю "TABLE_NAME"
+                "TABLE_NAME" => $hl_block_name
             ], 
         ]);
 
@@ -199,7 +204,6 @@ class AgentsList extends CBitrixComponent implements Controllerable, Errorable
             return $row;
         }
 
-        
 
         return [];
     }
@@ -216,11 +220,16 @@ class AgentsList extends CBitrixComponent implements Controllerable, Errorable
         }
 
         /*
-         * Написать запрос для получения класса хлблока (нужно использовать getDataClass())
+         * Получение класса хлблока
          * https://tichiy.ru/wiki/rabota-s-highload-blokami-bitriks-cherez-api-d7/
          */
 
-        return '';
+        $hlblock = HighloadBlockTable::getById($arHlblock["ID"])->fetch();
+
+        $entity = HighloadBlockTable::compileEntity($hlblock);
+        $entity_data_class = $entity->getDataClass();
+
+        return $entity_data_class;
     }
 
     /**
@@ -242,9 +251,18 @@ class AgentsList extends CBitrixComponent implements Controllerable, Errorable
         ])->Fetch()["ID"];
 
         if ($fieldID) {
-            /*
-             *  Получить список свойств для $fieldID используя класс CUserFieldEnum
-             */
+
+            // Получаем список свойств для $fieldID
+            $fieldEnum = CUserFieldEnum::GetList(
+                [],
+                [
+                    'USER_FIELD_ID' => $fieldID,
+                ],
+            )->arResult;
+
+            foreach ($fieldEnum as $properties) {
+                $result[$properties['ID']] = $properties['VALUE'];
+            }
         }
 
         return $result;
@@ -263,44 +281,55 @@ class AgentsList extends CBitrixComponent implements Controllerable, Errorable
             'ITEMS' => [], // список агентов
         ];
 
-        // Объект для пагинации, подробнее можно почитать
+        // Объект для пагинации
         $nav = new \Bitrix\Main\UI\PageNavigation("nav-agents");
         $nav->allowAllRecords(true)
-            ->setPageSize($this->arParams['']) //Нужно передать параметр Количество элементов из мввсива $this->arParams
+            ->setPageSize($this->arParams['AGENTS_COUNT'])
             ->initFromUri();
 
-        
-        $rsAgents = $entity::GetList([
+        $rsAgents = $entity::getlist([
             /*
-             * С помощью GetList запросить список "Активных" агентов,
-             * в запросе ограничить количество агентов (использовать объект для пагинации) 
+             * Запрашиваем список "Активных" агентов,
+             * в запросе ограничиваем количество агентов (используем объект для пагинации)
              * https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&LESSON_ID=2741
              */
+            "filter" => [
+                "UF_IS_ACTIVE" => 1,
+            ],
+            "offset" => $nav->getOffset(),
+            "limit" => $nav->getLimit(),
+            'count_total' => true, // дает возможность получить кол-во элементов через метод getCount()
         ]);
-    
+
         while ($arAgent = $rsAgents->fetch()) {
             /**
              * Обработает полученный массив
              * 
              * 1. В свойстве Вид деятельности записан ID значения списка,
-             * с помощью массива $arTypeAgents определить значение
+             * с помощью массива $arTypeAgents определяем значение
              * 
              * 2. В свойстве Фото записан ID файла из таблицы b_file,
-             * если значение есть, то получить путь через класс \CFile
+             * если значение есть, то получаем путь
              */
+            $typeAgentsFieldId = $arAgent['UF_EMPLOYMENT'];
+            $arAgent['UF_EMPLOYMENT'] = $arTypeAgents[$typeAgentsFieldId];
 
-            $arAgents['ITEMS'][$arAgent['ID']] = $arAgent; // Записываем получившийся массив в $arAgents['ITEMS']
+            if ($arAgent['UF_PHOTO']) {
+                $photoFieldId = $arAgent['UF_PHOTO'];
+                $arAgent['UF_PHOTO'] = CFile::GetByID($photoFieldId)->fetch();
+                $arAgent['UF_PHOTO'] = $arAgent['UF_PHOTO']['SRC'];
+            }
+
+            $arAgents['ITEMS'][$arAgent['ID']] = $arAgent; // Записываем получившийся массив
         }
 
         $nav->setRecordCount($rsAgents->getCount()); // В объект для пагинации передаем общее количество агентов
-        $arAgents['NAV_OBJECT'] = $nav; // Записываем получившийся объект в $arAgents['NAV_OBJECT']
+        $arAgents['NAV_OBJECT'] = $nav; // Записываем получившийся объект
 
-        return $arAgents; // Возвращаем результат
+        return $arAgents;
     }
 
 
-
-    // Далее код для ajax, к нему можно вернуться после внедрения верстки и js
     /**
      * Конфигурация событий для ajax
      */
@@ -319,31 +348,49 @@ class AgentsList extends CBitrixComponent implements Controllerable, Errorable
         ];
     }
 
+
     /**
      * Метод для изменения избранных агентов через ajax
      * @param $agentID - ID элемента агента
      * @return array|string[]
      */
-    public function clickStarAction($agentID)
+    public function clickStarAction($agentID): array
     {
         $result = []; // ответ, который уйдет на фронт
 
-        $value = []; // массив ID элементов, которые пользователь добавил в избраное
-        /*
-         * 1. Получить значения свойства из настроек пользователя (CUserOptions) для текущего пользователя
-         * https://dev.1c-bitrix.ru/community/webdev/user/259944/blog/17105/
-         * 2. Если значение есть, то
-         *   2.1. Проверить, что значение массив, если нет, то сделать массивом
-         *   2.2. Проверить есть ли в массиве $agentID
-         *     2.2.3. Если есть, удалить из массива
-         *     2.2.4. Если нет, добавить в массив
-         *   2.3. Записать в $value
-         * 3. Если значения нет, то $agentID записать $value
-         * 4. Записать $value (результат) в бз, метод CUserOptions::SetOption
-         * (его нет в документации, код метода и его параметры можно найти в ядре (/bitrix/modules/main/) или в гугле
-         * 5. Отправить на фронт в массиве $result в ключе 'action' значение 'success', если все прошло удачно
-         */
+        $value = []; // массив ID элементов, которые пользователь добавил в избранное
 
+        // Получаем Избранных агентов для текущего пользователя из таблицы b_user_option
+        $category = 'mcart_agent';
+        $name = 'options_agents_star';
+        $agentsStarOfUser = CUserOptions::GetOption($category, $name);
+
+        if ($agentsStarOfUser) {
+            if (!is_array($agentsStarOfUser)) {
+                // сделать массивом
+                $agentsStarOfUser = [$agentsStarOfUser];
+            }
+
+            // Если агент уже есть в избранных
+            if (in_array($agentID, $agentsStarOfUser)) {
+                // удаляем
+                $key = array_search($agentID, $agentsStarOfUser);
+                array_splice($agentsStarOfUser, $key, 1);
+            } else {
+                // добавляем
+                array_push($agentsStarOfUser, $agentID);
+            }
+
+            $value = $agentsStarOfUser;
+
+        } else { // если записи в таблице еще нет
+            array_push($value, $agentID);
+        }
+
+        $isSuccess = CUserOptions::SetOption($category, $name, $value);
+        if ($isSuccess) {
+            $result['action'] = 'success';
+        }
 
         return $result;
     }
