@@ -29,10 +29,6 @@ $this->setFrameMode(true);
             </div>
         </div>
 
-/*
- * Для постраничной навигации использовать компонент bitrix:main.pagenavigation
- */
-?>
         <div class="mb-5">
             <? foreach ($arResult["AGENTS"]["ITEMS"] as $arItem): ?>
                 <div class="agent__card">
@@ -81,6 +77,15 @@ $this->setFrameMode(true);
 
         <div class="row">
             <div class="col-md-12 text-center">
+                <? $APPLICATION->IncludeComponent(
+                    "bitrix:main.pagenavigation",
+                    "home_pagination_2",
+                    array(
+                        "NAV_OBJECT" => $arResult["AGENTS"]['NAV_OBJECT'],
+                        "SEF_MODE" => "N",
+                    ),
+                    false
+                ); ?>
             </div>
         </div>
 
