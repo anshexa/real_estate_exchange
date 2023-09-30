@@ -12,3 +12,7 @@ Thumbs.db
 .DS_Store
 ._.DS_Store
 test*.php
+/s2/upload/
+/s2/.htaccess
+/s2/robots.txt
+/s2/sitemap*.xml
