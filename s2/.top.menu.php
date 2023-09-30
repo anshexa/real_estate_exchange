@@ -29,8 +29,8 @@ $aMenuLinks = array(
         ""
     ),
     array(
-        "Контакты",
-        SITE_DIR . "contacts/",
+        "Партнерам",
+        SITE_DIR . "partners/",
         array(),
         array(),
         ""
