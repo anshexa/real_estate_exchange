@@ -293,6 +293,7 @@ class AgentsList extends CBitrixComponent implements Controllerable, Errorable
              * в запросе ограничиваем количество агентов (используем объект для пагинации)
              * https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&LESSON_ID=2741
              */
+            "select" => ["*"],
             "filter" => [
                 "UF_IS_ACTIVE" => 1,
             ],
@@ -316,8 +317,7 @@ class AgentsList extends CBitrixComponent implements Controllerable, Errorable
 
             if ($arAgent['UF_PHOTO']) {
                 $photoFieldId = $arAgent['UF_PHOTO'];
-                $arAgent['UF_PHOTO'] = CFile::GetByID($photoFieldId)->fetch();
-                $arAgent['UF_PHOTO'] = $arAgent['UF_PHOTO']['SRC'];
+                $arAgent['UF_PHOTO'] = CFile::GetPath($photoFieldId);
             }
 
             $arAgents['ITEMS'][$arAgent['ID']] = $arAgent; // Записываем получившийся массив
