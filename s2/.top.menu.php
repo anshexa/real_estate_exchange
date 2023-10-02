@@ -4,7 +4,7 @@ $aMenuLinks = array(
         "Компания",
         SITE_DIR . "company/",
         array(),
-        array(),
+        array("TEXT_MENU" => "текст для пункта \"Компания\""),
         ""
     ),
     array(
@@ -32,7 +32,7 @@ $aMenuLinks = array(
         "Партнерам",
         SITE_DIR . "partners/",
         array(),
-        array(),
+        array("TEXT_MENU" => "текст для пункта \"Партнерам\""),
         ""
     )
 );
