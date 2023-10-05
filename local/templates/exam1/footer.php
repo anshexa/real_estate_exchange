@@ -16,6 +16,7 @@ $isPageMain = ($APPLICATION->GetCurPage(false) == SITE_DIR);
             "exam1_left",
             array(
                 "ALLOW_MULTI_SELECT" => "N",    // Разрешить несколько активных пунктов одновременно
+                "CACHE_SELECTED_ITEMS" => "Y",  // Устранение ошибки не обновления меню при кэшировании, создать кэш для каждой страницы
                 "CHILD_MENU_TYPE" => "left",    // Тип меню для остальных уровней
                 "DELAY" => "N",    // Откладывать выполнение шаблона меню
                 "MAX_LEVEL" => "1",    // Уровень вложенности меню
@@ -23,7 +24,7 @@ $isPageMain = ($APPLICATION->GetCurPage(false) == SITE_DIR);
                     0 => "",
                 ),
                 "MENU_CACHE_TIME" => "3600",    // Время кеширования (сек.)
-                "MENU_CACHE_TYPE" => "N",    // Тип кеширования
+                "MENU_CACHE_TYPE" => "A",    // Тип кеширования
                 "MENU_CACHE_USE_GROUPS" => "Y",    // Учитывать права доступа
                 "ROOT_MENU_TYPE" => "left",    // Тип меню для первого уровня
                 "USE_EXT" => "Y",    // Подключать файлы с именами вида .тип_меню.menu_ext.php
