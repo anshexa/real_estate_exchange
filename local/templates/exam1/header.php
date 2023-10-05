@@ -22,9 +22,10 @@ $isPageMain = ($APPLICATION->GetCurPage(false) == SITE_DIR);
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.min.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/owl.carousel.min.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/scripts.js");
+
+    Asset::getInstance()->addString('<link rel="icon" type="image/vnd.microsoft.icon" href="' . SITE_TEMPLATE_PATH . '/img/favicon.ico">');
+    Asset::getInstance()->addString('<link rel="shortcut icon" href="' . SITE_TEMPLATE_PATH . '/img/favicon.ico">');
     ?>
-    <link rel="icon" type="image/vnd.microsoft.icon" href="<?= SITE_TEMPLATE_PATH ?>/img/favicon.ico">
-    <link rel="shortcut icon" href="<?= SITE_TEMPLATE_PATH ?>/img/favicon.ico">
 </head>
 
 <body>
