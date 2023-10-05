@@ -1,6 +1,6 @@
 <?php
 $arUrlRewrite=array (
-  10 => 
+  10 =>
   array (
     'CONDITION' => '#^/lichnyy-kabinet-prodavtsa/moi-obyavleniya/#',
     'RULE' => '',
@@ -8,7 +8,7 @@ $arUrlRewrite=array (
     'PATH' => '/lichnyy-kabinet-prodavtsa/moi-obyavleniya/index.php',
     'SORT' => 100,
   ),
-  9 => 
+  9 =>
   array (
     'CONDITION' => '#^/o-servise/vakansii/#',
     'RULE' => '',
@@ -16,7 +16,7 @@ $arUrlRewrite=array (
     'PATH' => '/o-servise/vakansii/index.php',
     'SORT' => 100,
   ),
-  7 => 
+  7 =>
   array (
     'CONDITION' => '#^/o-servise/novosti/#',
     'RULE' => '',
@@ -24,7 +24,15 @@ $arUrlRewrite=array (
     'PATH' => '/o-servise/novosti/index.php',
     'SORT' => 100,
   ),
-  8 => 
+  14 =>
+  array (
+    'CONDITION' => '#^/s2/rew/#',
+    'RULE' => '',
+    'ID' => 'bitrix:news',
+    'PATH' => '/s2/rew/index.php',
+    'SORT' => 100,
+  ),
+  8 =>
   array (
     'CONDITION' => '#^/obyavleniya/#',
     'RULE' => '',
@@ -32,7 +40,7 @@ $arUrlRewrite=array (
     'PATH' => '/obyavleniya/index.php',
     'SORT' => 100,
   ),
-  11 => 
+  11 =>
   array (
     'CONDITION' => '#^/s2/services/#',
     'RULE' => '',
@@ -40,7 +48,7 @@ $arUrlRewrite=array (
     'PATH' => '/s2/services/index.php',
     'SORT' => 100,
   ),
-  12 => 
+  12 =>
   array (
     'CONDITION' => '#^/s2/products/#',
     'RULE' => '',
@@ -48,7 +56,7 @@ $arUrlRewrite=array (
     'PATH' => '/s2/products/index.php',
     'SORT' => 100,
   ),
-  0 => 
+  0 =>
   array (
     'CONDITION' => '#^/services/#',
     'RULE' => '',
@@ -56,7 +64,7 @@ $arUrlRewrite=array (
     'PATH' => '/services/index.php',
     'SORT' => 100,
   ),
-  1 => 
+  1 =>
   array (
     'CONDITION' => '#^/products/#',
     'RULE' => '',
@@ -64,7 +72,7 @@ $arUrlRewrite=array (
     'PATH' => '/products/index.php',
     'SORT' => 100,
   ),
-  13 => 
+  13 =>
   array (
     'CONDITION' => '#^/s2/news/#',
     'RULE' => '',
@@ -72,7 +80,7 @@ $arUrlRewrite=array (
     'PATH' => '/s2/news/index.php',
     'SORT' => 100,
   ),
-  2 => 
+  2 =>
   array (
     'CONDITION' => '#^/news/#',
     'RULE' => '',

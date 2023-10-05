@@ -34,6 +34,13 @@ $aMenuLinks = array(
         array(),
         array("TEXT_MENU" => "текст для пункта \"Партнерам\""),
         ""
+    ),
+    array(
+        "Отзывы",
+        SITE_DIR . "rew/",
+        array(),
+        array(),
+        ""
     )
 );
 ?>
