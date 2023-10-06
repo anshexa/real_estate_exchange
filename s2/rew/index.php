@@ -45,7 +45,7 @@ $APPLICATION->SetTitle("Отзывы");
         "HIDE_LINK_WHEN_NO_DETAIL" => "N",    // Скрывать ссылку, если нет детального описания
         "IBLOCK_ID" => "13",    // Инфоблок
         "IBLOCK_TYPE" => "reviews",    // Тип инфоблока
-        "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",    // Включать инфоблок в цепочку навигации
+        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",    // Включать инфоблок в цепочку навигации
         "LIST_ACTIVE_DATE_FORMAT" => "j F Y",    // Формат показа даты
         "LIST_FIELD_CODE" => array(    // Поля
             0 => "",

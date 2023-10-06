@@ -36,7 +36,7 @@ $APPLICATION->SetTitle("Новости");
         "DISPLAY_PANEL" => "N",
         "SET_TITLE" => "Y",
         "SET_STATUS_404" => "Y",
-        "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
         "ADD_SECTIONS_CHAIN" => "Y",
         "USE_PERMISSIONS" => "N",
         "PREVIEW_TRUNCATE_LEN" => "",
