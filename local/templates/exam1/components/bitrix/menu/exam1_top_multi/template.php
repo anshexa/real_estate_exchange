@@ -10,7 +10,6 @@
 
                 <? if (!empty($arResult)): ?>
                     <ul class="">
-                        <li class="main-page"><a href="<?= SITE_DIR ?>">Главная</a></li>
 
                         <? $previousLevel = 0;
                         foreach ($arResult as $arItem): ?>
@@ -20,7 +19,11 @@
                             <? endif ?>
 
                             <? if ($arItem["PERMISSION"] > "D"): // разрешено - выводим ?>
-                                <li><a href="<?= $arItem["LINK"] ?>"><?= $arItem["TEXT"] ?></a>
+                                <li
+                                    <? if ($arItem["LINK"] == SITE_DIR): ?>
+                                        class="main-page"
+                                    <? endif; ?>>
+                                    <a href="<?= $arItem["LINK"] ?>"><?= $arItem["TEXT"] ?></a>
                                 <? if ($arItem["IS_PARENT"]): ?>
                                     <ul>
                                     <? if ($arItem["PARAMS"]["TEXT_MENU"]): ?>

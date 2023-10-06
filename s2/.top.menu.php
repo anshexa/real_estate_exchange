@@ -1,6 +1,13 @@
 <?
 $aMenuLinks = array(
     array(
+        "Главная",
+        SITE_DIR . "/",
+        array(),
+        array(),
+        ""
+    ),
+    array(
         "Компания",
         SITE_DIR . "company/",
         array(),
