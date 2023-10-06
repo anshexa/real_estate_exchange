@@ -28,7 +28,7 @@ $this->setFrameMode(true);
                     <a href="<?= $arItem["DETAIL_PAGE_URL"]?>"><?= $arItem['NAME'] ?></a>
                 </span>
                 <span class="review-block-description">
-                    <?= FormatDateFromDB($arItem['DATE_ACTIVE_FROM'], 'DD MMMM YYYY г.') ?>,
+                    <?= "{$arItem['DISPLAY_ACTIVE_FROM']} г." ?>,
                     <?= $arItem['DISPLAY_PROPERTIES']['POSITION']['VALUE'] ?>,
                     <?= $arItem['DISPLAY_PROPERTIES']['COMPANY']['VALUE'] ?>
                 </span>

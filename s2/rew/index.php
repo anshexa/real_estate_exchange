@@ -19,7 +19,7 @@ $APPLICATION->SetTitle("Отзывы");
         "CACHE_TIME" => "36000000",    // Время кеширования (сек.)
         "CACHE_TYPE" => "A",    // Тип кеширования
         "CHECK_DATES" => "Y",    // Показывать только активные на данный момент элементы
-        "DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",    // Формат показа даты
+        "DETAIL_ACTIVE_DATE_FORMAT" => "j F Y",    // Формат показа даты
         "DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",    // Выводить под списком
         "DETAIL_DISPLAY_TOP_PAGER" => "N",    // Выводить над списком
         "DETAIL_FIELD_CODE" => array(    // Поля
@@ -46,7 +46,7 @@ $APPLICATION->SetTitle("Отзывы");
         "IBLOCK_ID" => "13",    // Инфоблок
         "IBLOCK_TYPE" => "reviews",    // Тип инфоблока
         "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",    // Включать инфоблок в цепочку навигации
-        "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",    // Формат показа даты
+        "LIST_ACTIVE_DATE_FORMAT" => "j F Y",    // Формат показа даты
         "LIST_FIELD_CODE" => array(    // Поля
             0 => "",
         ),

@@ -20,7 +20,7 @@ $this->setFrameMode(true);
         </div>
         <div class="review-autor">
             <?= $arResult['NAME'] ?>,
-            <?= FormatDateFromDB($arResult['DATE_ACTIVE_FROM'], 'DD MMMM YYYY г.') ?>,
+            <?= "{$arResult['DISPLAY_ACTIVE_FROM']} г." ?>,
             <?= $arResult['DISPLAY_PROPERTIES']['POSITION']['VALUE'] ?>,
             <?= $arResult['DISPLAY_PROPERTIES']['COMPANY']['VALUE'] ?>.
         </div>
