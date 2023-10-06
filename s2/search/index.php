@@ -12,7 +12,7 @@ $APPLICATION->SetTitle("Поиск");
         "USE_TITLE_RANK" => "N",
         "DEFAULT_SORT" => "rank",
         "arrFILTER" => array(
-            0 => "iblock_reviews",
+            0 => "no",
         ),
         "SHOW_WHERE" => "N",
         "SHOW_WHEN" => "N",
@@ -34,17 +34,7 @@ $APPLICATION->SetTitle("Поиск");
         "SHOW_ITEM_DATE_CHANGE" => "N",
         "SHOW_ORDER_BY" => "N",
         "SHOW_TAGS_CLOUD" => "N",
-        "AJAX_OPTION_ADDITIONAL" => "",
-        "COMPONENT_TEMPLATE" => "clear",
-        "NO_WORD_LOGIC" => "N",
-        "FILTER_NAME" => "",
-        "arrFILTER_iblock_reviews" => array(
-            0 => "13",
-        ),
-        "USE_LANGUAGE_GUESS" => "Y",
-        "SHOW_RATING" => "",
-        "RATING_TYPE" => "",
-        "PATH_TO_USER_PROFILE" => ""
+        "AJAX_OPTION_ADDITIONAL" => ""
     ),
     false
 ); ?>
