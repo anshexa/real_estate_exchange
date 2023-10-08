@@ -23,7 +23,14 @@
                                     <? if ($arItem["LINK"] == SITE_DIR): ?>
                                         class="main-page"
                                     <? endif; ?>>
-                                    <a href="<?= $arItem["LINK"] ?>"><?= $arItem["TEXT"] ?></a>
+
+                                    <? $classColorMenu = '';
+                                    if ($arItem["PARAMS"]["CLASS_COLOR_MENU"]) {
+                                        $classColorMenu = $arItem["PARAMS"]["CLASS_COLOR_MENU"];
+                                    } ?>
+                                    <a href="<?= $arItem["LINK"] ?>" class="<?= $classColorMenu ?>">
+                                        <?= $arItem["TEXT"] ?>
+                                    </a>
                                 <? if ($arItem["IS_PARENT"]): ?>
                                     <ul>
                                     <? if ($arItem["PARAMS"]["TEXT_MENU"]): ?>

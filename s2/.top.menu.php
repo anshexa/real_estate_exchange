@@ -11,7 +11,7 @@ $aMenuLinks = array(
         "Компания",
         SITE_DIR . "company/",
         array(),
-        array("TEXT_MENU" => "текст для пункта \"Компания\""),
+        array("TEXT_MENU" => "текст для пункта \"Компания\"", "CLASS_COLOR_MENU" => "color-red"),
         ""
     ),
     array(
@@ -25,7 +25,7 @@ $aMenuLinks = array(
         "Продукция",
         SITE_DIR . "products/",
         array(),
-        array(),
+        array("CLASS_COLOR_MENU" => "color-green"),
         ""
     ),
     array(
