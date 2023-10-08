@@ -194,7 +194,17 @@ $isPageMain = ($APPLICATION->GetCurPage(false) == SITE_DIR);
             <div class="title-block"><?= GetMessage('S2_FOOTER_CONTACT_INFO') ?></div>
             <div class="loc-block">
                 <div class="address">ул. Летняя, стр.12, офис 512</div>
-                <div class="phone"><a href="tel:84952128506">8 (495) 212-85-06</a>
+                <div class="phone">
+                    <? $APPLICATION->IncludeComponent(
+                        "bitrix:main.include",
+                        "",
+                        array(
+                            "AREA_FILE_SHOW" => "file",
+                            "AREA_FILE_SUFFIX" => "inc",
+                            "EDIT_TEMPLATE" => "",
+                            "PATH" => "/s2/include/exam1_phone_footer.php"
+                        )
+                    ); ?>
                 </div>
             </div>
             <div class="main-soc-block">
