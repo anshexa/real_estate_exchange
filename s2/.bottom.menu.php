@@ -4,15 +4,22 @@
 <?
 $aMenuLinks = array(
     array(
-        "Контакты",
-        "contacts/",
+        "Отзывы",
+        SITE_DIR . "rew/",
         array(),
         array(),
         ""
     ),
     array(
-        "Авторизация",
-        "login/",
+        "Руководство",
+        SITE_DIR . "company/management.php",
+        array(),
+        array(),
+        ""
+    ),
+    array(
+        "История",
+        SITE_DIR . "company/history.php",
         array(),
         array(),
         ""
