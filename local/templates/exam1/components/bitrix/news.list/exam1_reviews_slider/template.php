@@ -63,9 +63,8 @@ $this->setFrameMode(true);
                             </div>
                         </div>
 
-                        <? $trimmedText = mb_substr($arItem['PREVIEW_TEXT'], 0, 150) ?>
                         <div class="text-block">
-                            “<?= $trimmedText ?>...
+                            “<?= $arItem['PREVIEW_TEXT'] ?>
                         </div>
                     </div>
                 </div>

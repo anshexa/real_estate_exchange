@@ -105,7 +105,7 @@ $isPageMain = ($APPLICATION->GetCurPage(false) == SITE_DIR);
                 "PAGER_TITLE" => "Отзывы",    // Название категорий
                 "PARENT_SECTION" => "",    // ID раздела
                 "PARENT_SECTION_CODE" => "",    // Код раздела
-                "PREVIEW_TRUNCATE_LEN" => "",    // Максимальная длина анонса для вывода (только для типа текст)
+                "PREVIEW_TRUNCATE_LEN" => "150",    // Максимальная длина анонса для вывода (только для типа текст)
                 "PROPERTY_CODE" => array(    // Свойства
                     0 => "POSITION",
                     1 => "COMPANY",
