@@ -1,0 +1,4 @@
+<?
+$sSectionName = " Опросы";
+$arDirProperties = array();
+?>

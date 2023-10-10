@@ -10,5 +10,6 @@ $PERM["lichnyy-kabinet-prodavtsa"]["7"]="X";
 $PERM["lichnyy-kabinet-prodavtsa"]["*"]="D";
 $PERM["products"]["5"]="W";
 $PERM["/"]["8"]="R";
+$PERM["/"]["9"]="R";
 $PERM["/"]["*"]="R";
 ?>

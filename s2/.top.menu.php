@@ -55,6 +55,13 @@ $aMenuLinks = array(
         array(),
         array(),
         ""
+    ),
+    array(
+        " Опросы",
+        SITE_DIR . "ask/",
+        array(),
+        array(),
+        ""
     )
 );
 ?>
