@@ -34,12 +34,17 @@ $isPageMain = ($APPLICATION->GetCurPage(false) == SITE_DIR);
         <!-- /side menu -->
     <? endif; ?>
     <!-- side anonse -->
-    <div class="side-block side-anonse">
-        <div class="title-block"><span class="i i-title01"></span>Полезная информация!</div>
-        <div class="item">
-            <p>Клиенты предпочитают все больше эко-материалов.</p>
-        </div>
-    </div>
+    <? $APPLICATION->IncludeComponent(
+        "bitrix:main.include",
+        "exam1_helpful_info",
+        array(
+            "AREA_FILE_SHOW" => "sect",    // Показывать включаемую область
+            "AREA_FILE_SUFFIX" => "include",    // Суффикс имени файла включаемой области
+            "AREA_FILE_RECURSIVE" => "Y",    // Рекурсивное подключение включаемых областей разделов
+            "EDIT_TEMPLATE" => "",    // Шаблон области по умолчанию
+        ),
+        false
+    ); ?>
     <!-- /side anonse -->
     <!-- side wrap -->
     <div class="side-wrap">
