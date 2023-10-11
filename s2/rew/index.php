@@ -48,7 +48,8 @@ $APPLICATION->SetTitle("Отзывы");
         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",    // Включать инфоблок в цепочку навигации
         "LIST_ACTIVE_DATE_FORMAT" => "j F Y",    // Формат показа даты
         "LIST_FIELD_CODE" => array(    // Поля
-            0 => "",
+            0 => "DETAIL_PICTURE",
+            1 => "",
         ),
         "LIST_PROPERTY_CODE" => array(    // Свойства
             0 => "POSITION",
