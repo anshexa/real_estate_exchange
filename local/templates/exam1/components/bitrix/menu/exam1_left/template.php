@@ -4,7 +4,13 @@
 <? if (!empty($arResult)): ?>
 
     <div class="side-block side-menu">
-        <div class="title-block"><?= GetMessage("T_EXAM_MENU_TITLE") ?></div>
+        <? $left_menu_header_color = $APPLICATION->GetPageProperty('left_menu_header_color');
+        if (!$left_menu_header_color) {
+            $left_menu_header_color = 'red';
+        } ?>
+        <div class="title-block <?= $left_menu_header_color ?>">
+            <?= GetMessage("T_EXAM_MENU_TITLE") ?>
+        </div>
         <div class="menu-block">
             <ul>
                 <? foreach ($arResult as $arItem):

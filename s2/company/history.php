@@ -1,5 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
+$APPLICATION->SetPageProperty("left_menu_header_color", "green");
 $APPLICATION->SetTitle("История");
 ?>
     <table cellspacing="10">
