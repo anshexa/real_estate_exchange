@@ -5,42 +5,42 @@
 $aMenuLinks = array(
     array(
         "О компании",
-        SITE_DIR . "./",
+        "./",
         array(),
         array(),
         ""
     ),
     array(
         "Руководство",
-        SITE_DIR . "management.php",
+        "management.php",
         array(),
         array(),
         ""
     ),
     array(
         "Миссия и стратегия",
-        SITE_DIR . "mission.php",
+        "mission.php",
         array(),
         array(),
         ""
     ),
     array(
         "История",
-        SITE_DIR . "history.php",
+        "history.php",
         array(),
         array(),
         ""
     ),
     array(
         "Вакансии",
-        SITE_DIR . "vacancies.php",
+        "vacancies.php",
         array(),
         array(),
         ""
     ),
     array(
         "Обратная связь",
-        SITE_DIR . "/s2/company/obratnaya-svyaz.php",
+        "obratnaya-svyaz.php",
         array(),
         array(),
         ""
